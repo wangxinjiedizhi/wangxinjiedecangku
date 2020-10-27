@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        li{
+            list-style: none;
+        }
+        .detail{
+            margin: 20px auto;
+            width: 1190px !important;
+        }
+        .detail-meta{
+            width: 990px;
+            position: relative;
+            z-index: 100;
+            min-height: 600px;
+        }
+        .gallery{
+            float: left;
+            width: 460px;
+            position: relative;
+        }
+        .booth{
+            position: relative;
+            display: table;
+            table-layout: fixed;
+            z-index: +1;
+            width: 420px;
+            height: 420px;
+            margin: 20px 20px 0 20px;
+        }
+        .shizi{
+            background-attachment: scroll;
+            background-repeat: repeat;
+            cursor: move;
+            z-index: 1;
+            position: absolute;
+            overflow: hidden;
+            background-position: 0 0;
+            background-image: url(./image/shizi1.png);
+            width: 174.724px;
+            height: 174.724px;
+            display: none;
+        }
+        .bigimg{
+            position:absolute;
+            top: 0;
+            left: 430px;
+            overflow: hidden;
+            z-index: +1;
+            width: 420px;
+            height: 420px;
+            display: none;
+        }
+        .bigimg img{
+            position: absolute;
+            z-index: +1;
+        }
+        .booth>img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .thumb-content{
+            text-align: center;
+            margin-left: 30px;
+            white-space: nowrap;
+            position: relative;
+            transition: left .2s cubic-bezier(0,0,.25,1);
+            font-size: 0;
+        }
+        .thumb-content img{
+            display: inline-block;
+            margin: 22px 0 0 16px;
+        }
+        .thumb-content img{
+            float: left;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+        }
+        .wo {
+            border: 2px solid #000;
+        }
+        .thumb-content img{
+            /* display: block; */
+            
+            width: 56px;
+            height: 56px;
+        }
+        .thumb-content img{
+            left: -2px;
+            top: -2px;
+            position: relative;
+            max-width: 60px;
+            max-height: 60px;
+        }
+        .wrap{
+            margin: 0 0 0 460px;
+            color: #666;
+            padding: 0 0 10px;
+            z-index: -1;
+        }
+        .detail-hd{
+            padding: 20px 10px 12px;
+            color: #000;
+            box-sizing: border-box;
+        }
+        .price-panel{
+            line-height: 30px;
+        }
+        .panel{
+            background-color: #e9e9e9;
+            background-repeat: no-repeat;
+            line-height: 30px;
+            position: relative;
+            left: 0;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            margin-right: 20px;
+            background-image: url(./image/money.png);
+            box-sizing: border-box;
+        }
+        .metatit{
+            color: #999;
+            font-size: 12px;
+            text-align: left;
+            float: left;
+            width: 69px;
+            margin: 0 0 0 8px;
+            line-height: 33px;
+        }
+        .panel dd{
+            color: #333;
+            margin-left: 70px;
+            font-family: Arial;
+        }
+        .panel dd em{
+            color: #FF0036;
+            font-size: 18px;
+            font-style: normal;
+        }
+        .panel dd span{
+            color: #FF0036;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+        .meta{
+            margin: 5px 20px 5px 0;
+        }
+        .metatit1{
+            color: #999;
+            font-size: 12px;
+            text-align: left;
+            float: left;
+            width: 50px;
+            margin: 0 10px;
+            line-height: 36px;
+        }
+        .postAge{
+            line-height: 18px;
+            padding: 9px 0;
+        }
+        .postAge span{
+            color: #333;
+            margin-right: -12px;
+            padding-right: 12px;
+            cursor: pointer;
+            background: 0 0;
+            border: none;
+            position: relative;
+            font-size: 12px;
+        }
+        .ind-panel{
+            border: 1px dotted #c9c9c9;
+            border-width: 1px 0;
+            margin: -1px 20px 0 0;
+            padding: 3px 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+        .count{
+            line-height: 18px;
+            padding: 9px 0;
+        }
+        .count span{
+            color: #280;
+            margin-right: -12px;
+            padding-right: 12px;
+            cursor: pointer;
+            background: 0 0;
+            border: none;
+            position: relative;
+            font-size: 12px;
+        }
+        .key{
+            margin: 0 20px 24px 10px;
+        }
+        .skin{
+            padding: 10px 0;
+        }
+        .sku{
+            padding: 5px 0 12px;
+            position: relative;
+        }
+        .action{
+            padding: 10px 0 0 66px;
+            margin: 10px 0 0;
+        }
+        .btn-buy{
+            margin-right: 10px;
+            float: left;
+        }
+        .btn-buy a, .btn-basket span{
+            margin-right: 0;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            width: 178px;
+            font-family: 'Microsoft Yahei';
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .btn-basket{
+            margin-right: 1px;
+            float: left;
+        }
+        .btn-buy a{
+            background-color: #ffeded;
+            border: 1px solid #FF0036;
+            color: #FF0036;
+        }
+        .btn-basket span{
+            background-color: #ff0036;
+            border: 1px solid #ff0036;
+            color: #fff;
+            cursor: pointer;
+        }
+        .chima-s {
+            border: 1px solid black;
+            padding: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .chima-s:hover{
+            border: 1px solid red;
+        }
+        .oo {
+            color: red;
+            border:1px solid rgb(206, 206, 202);
+        }
+    </style>
+</head>
+<body>
+    <div class="detail">
+        <div class="detail-meta">
+            <div class="gallery">
+                <div class="booth">
+                    <span class="shizi"></span>
+                    <div class="bigimg">
+                    </div>
+                </div>
+                <div class="thumb-content">
+                    <img src="./image/money.png" alt="" class="selected wo">
+                    <img src="./image/money.png" alt="" class="selected">
+                    <img src="./image/money.png" alt="" class="selected">
+                    <img src="./image/money.png" alt="" class="selected">
+                    <img src="./image/money.png" alt="" class="selected">
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="detail-hd"></div>
+                <div class="price-panel">
+                    <div class="panel">
+                        <div class="metatit">价格</div>
+                        <dd>
+                            <em>￥</em>
+                            <span></span>
+                        </dd>
+                    </div>
+                </div>
+                <div class="meta">
+                    <dt class="metatit1">运费</dt>
+                    <dd>
+                        <div class="postAge">
+                            <span></span>
+                        </div>
+                    </dd>
+                </div>
+                <ul class="ind-panel">
+                    <dt class="metatit1">库存</dt>
+                    <dd>
+                        <div class="count">
+                            <span></span>
+                        </div>
+                    </dd>
+                </ul>
+                <ul class="ind-panel">
+                    <dt class="metatit1">尺码</dt>
+                        <span class="chima-s">XS</span>
+                        <span class="chima-s">S</span>
+                        <span class="chima-s">M</span>
+                        <span class="chima-s">L</span>
+                        <span class="chima-s">XL</span>
+                        <span class="chima-s">XXL</span>
+                </ul>
+                <div class="key">
+                    <div class="skin">
+                        <div class="sku">
+                            <div class="action">
+                                <div class="btn-buy">
+                                    <a href="">立即购买</a>
+                                </div>
+                                <div class="btn-basket">
+                                   <span>加入购物车</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var obj = {
+                img : dataList[0].pict_url,
+                name : dataList[0].title,
+                price : dataList[0].zk_final_price,
+                id:xq,
+                num:1,
+                state:false
+            }
+        $(".btn-basket").click(function() {
+        var data =JSON.parse(localStorage.getItem("gouwuche")) ||[];
+            data.push(obj);
+            localStorage.setItem("gouwuche", JSON.stringify(data));
+            console.log(data);
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+        $(".chima-s").click(function() {
+            $(this).addClass("oo").siblings().removeClass("oo");
+        })
+
+        var xq = location.search.split("=")[1];
+        var dataList = [];
+        $.ajax({
+            url: 'http://127.0.0.1/w/website/findGoodsDetail',
+            data: {
+                info: xq
+            },
+            type:'get',
+            success: function(lgd) {
+                console.log(lgd);
+                dataList = lgd.data.detail.tbk_item_info_get_response.results.n_tbk_item;
+                console.log(dataList)
+                for (var i = 0; i < dataList.length; i++) {
+                    $(".booth").append('<img src="'+dataList[0].pict_url+'">');
+                    $(".bigimg").append('<img src="'+dataList[0].pict_url+'">');
+                    $(".detail-hd").html(dataList[0].title);
+                    $(".panel span").html(dataList[0].zk_final_price);
+                    $(".postAge span").html(dataList[0].provcity);
+                    $(".thumb-content img").eq(0)[0].src=dataList[0].pict_url;
+                    $(".thumb-content img").eq(1)[0].src=dataList[0].small_images.string[0];
+                    $(".thumb-content img").eq(2)[0].src=dataList[0].small_images.string[1];
+                    $(".thumb-content img").eq(3)[0].src=dataList[0].small_images.string[2];
+                    $(".thumb-content img").eq(4)[0].src=dataList[0].small_images.string[3];
+                    $(".count span").html(dataList[0].volume);
+                }
+            }
+        })
+        $(".thumb-content img").click(function() {
+            $(".booth>img")[0].src = this.src;
+            $(".bigimg img")[0].src = this.src;
+            $(this).addClass("wo").siblings().removeClass("wo");
+        })
+
+        // 放大镜
+        $(".booth").mouseover(function() {
+            $(".shizi").show()
+            $(".bigimg").show()
+        })
+        $(".booth").mouseout(function() {
+            $(".shizi").hide()
+            $(".bigimg").hide()
+        })
+
+        $(".booth").mousemove(function(e) {
+            var l = e.pageX - $(".booth").offset().left - ($(".shizi").width() / 2)
+            var t = e.pageY - $(".booth").offset().top - ($(".shizi").height() / 2)
+            if (l < 0) {
+                l = 0
+            }
+            if (l > $(this).width() - $(".shizi").width()) {
+                l = $(this).width() - $(".shizi").width()
+            }
+            if (t < 0) {
+                t = 0
+            }
+            if (t > $(this).height() - $(".shizi").height()) {
+                t = $(this).height() - $(".shizi").height()
+            }
+            $(".shizi").css({
+                "left": l,
+                "top": t
+            })
+            var pX = l / ($(".booth").width() - $(".shizi").width())
+            var pY = t / ($(".booth").height() - $(".shizi").height())
+            $(".bigimg img").css({
+                "left": -pX * ($(".bigimg img").width() - $(".bigimg").width()),
+                "top": -pY * ($(".bigimg img").height() - $(".bigimg").height())
+            })
+        })
+
+
+
+
+       
+    </script>
+</body>
+</html>

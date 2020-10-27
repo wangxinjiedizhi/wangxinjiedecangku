@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼多多 新电商开创者</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.pinduoduo.com/homeFavicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/iconfont1.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .item img {
+    margin: 0 auto;
+    width: 100%;
+    height: 300px!important;
+  }
+  #carousel-example-generic {
+    width: 1517px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  .nav-wrapper {
+    background-color: #ed445b;
+    width: 100%;
+    height: 44px;
+    z-index: 1;
+}
+.skt {
+    width: 1200px;
+    margin: 0 auto;
+}
+.foucs {
+    background-color: #d53758;
+}
+.skt {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.skt li {
+    display: inline-block;
+    height: 44px;
+    line-height: 40px;
+    padding: 0 18px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+
+}
+li {
+  list-style: none;
+}
+.bx {
+  width: 1200px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.cf::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.box-a1 {
+    float: left;
+    height: auto;
+    margin: 21px 0 21px -238px;
+    max-width: 180px;
+    width: 15%;
+}
+.box-a1 img {
+  width: 180px;
+  height: 63px;
+  margin-left: -26px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.box-s {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.box-li {
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    border-right: 1px solid #6c6c6c;
+}
+.box-b {
+  float: right;
+    color: #6c6c6c;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    left: 230px;
+    margin-top: -15px;
+}
+.box-a {
+  position: relative;
+}
+.banner-group {
+    width: 1200px;
+    margin: 91px auto 35px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+}
+.banner {
+    float: left;
+    width: 546px;
+    height: 271px;
+}
+.carousel-indicators {
+    bottom: 0px!important;
+}
+.goods {
+    background-color: #fff;
+    float: left;
+    /* margin: 30px 30px 0 0; */
+    margin-left: 24px;
+    margin-top: 30px;
+    width: 270px;
+    position: relative;
+    box-sizing: border-box;
+}
+.img {
+    width: 220px;
+    height: 220px;
+    margin: 28px auto;
+}
+.qrcode {
+    /* position: absolute;
+    left: 28px;
+    top: 28px; */
+    width: 220px;
+    height: 220px;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+}
+.qrcode img {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 160px;
+    height: auto;
+}
+.goods .img {
+    width: 220px;
+    height: 220px;
+    margin: 28px auto;
+    display: block;
+}
+.qrcode-text {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+.goods .title {
+    color: #686868;
+    font-size: 16px;
+    line-height: 22px;
+    height: 44px;
+    margin: 0 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.goods .price {
+    padding: 30px 15px 20px 15px;
+    line-height: 22px;
+}
+.group-price {
+    color: #111;
+    font-size: 22px;
+}
+.market-price {
+    color: #cbcbcb;
+    font-size: 18px;
+    text-decoration: line-through;
+}
+.count {
+    float: right;
+    color: #9c9c9c;
+    font-size: 16px;
+}
+.goods img {
+  width: 220px;
+  height: 220px;
+  margin: 28px auto;
+  display: block;
+}
+body {
+  background-color: #f1f0f0!important;
+}
+.a-1 {
+  display: block;
+}
+.pdd-foot {
+    /* background-color: #fff; */
+    /* padding-top: 1800px; */
+    position: relative;
+    width: 100%;
+    /* height: 800px; */
+    /* margin-bottom: 60px; */
+}
+.pdd-foot-head {
+    color: #4d4d4d;
+    font-size: 0;
+    margin-top: 70px;
+    /* margin: 0 auto; */
+    position: relative;
+    width: 100%;
+    /* max-width: 1000px; */
+    clear: both;
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 300px;
+    height: 80px;
+    box-sizing: border-box;
+}
+.box-one {
+  height: 900px;
+}
+.qrcode-group {
+  float: left;
+    width: 666px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 218px;
+}
+.qrcode {
+    width: 162px;
+    height: 162px;
+    margin-right: 60px;
+    vertical-align: text-top;
+}
+img {
+    display: block;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+.qrcode p {
+    margin: 8px auto;
+    color: #4d4d4d;
+    font-size: 16px;
+    text-align: center;
+}
+.word-wrap {
+    width: 85%;
+}
+.contact-info {
+    margin-left: 888px;
+    padding-left: 45px;
+    width: 451px;
+    border-left: 1px solid #4d4d4d;
+}
+.contact-info .title {
+    color: #4d4d4d;
+    font-size: 24px;
+    line-height: 24px;
+}
+.detail {
+    color: #4d4d4d;
+    font-size: 15px;
+    line-height: 16px;
+    margin-top: 20px;
+}
+.box-a-a {
+  border-bottom: 5px solid red;
+  /* position: fixed;
+  top: 0; */
+}
+.top {
+  width: 100%;
+  height: 35px;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+}
+.top-s1 {
+  float: left;
+  margin-left: 180px;
+  line-height: 35px;
+}
+.top .top-s2 {
+  float: left;
+  color: red;
+  margin-left: 20px;
+  line-height: 35px;
+}
+.top .top-s3 {
+  float: left;
+  margin-left: 20px;
+  line-height: 35px;
+}
+.pd-nav-list {
+    display: inline-block;
+    position: relative;
+    margin-left: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 90px;
+    /* background-color: #fff; */
+}
+.pd-nav-list-item {
+    cursor: pointer;
+    display: inline-block;
+    border-right: 1px solid #c1c1c1;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.pd-nav-list-item span {
+    color: #6c6c6c;
+    font-size: 16px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.copyright {
+    position: relative;
+    background-color: #3f3e3e;
+    height: 130px;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: #b1b1b1;
+}
+.pdd-foot-cr {
+    padding-top: 27px;
+}
+.copyright {
+    position: relative;
+    background-color: #3f3e3e;
+    height: 130px;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: #b1b1b1;
+}
+.pdd-foot-medicine {
+    padding: 17px 0;
+}
+.pdd-foot-record {
+    text-indent: 25px;
+}
+.record-num {
+  margin-left: 25px;
+}
+.no {
+  color: red;
+}
+.top-a {
+  float: right;
+  outline: none;
+  border: 2px solid red;
+  margin-top: 5px;
+  margin-right: 280px;
+  border-radius: 5px;
+}
+.spann {
+  float: right;
+  margin-top: 5px;
+  margin-right: -171px;
+  color: red;
+  cursor: pointer;
+}
+.spann1 {
+  float: right;
+  margin-top: 7px;
+  margin-right: -223px;
+  color: red;
+  cursor: pointer;
+}
+.top-img {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-top: 6px;
+  margin-right: 5px;
+}
+.wrap {
+			height: 40px;
+			display: flex;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.wrap span {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			color: #f99;
+			user-select: none;
+			border-radius: 5px;
+			margin: 0px 3px;
+			background: #fff;
+			cursor: pointer;
+			transition: all .3s;
+		}
+
+		.wrap span.on {
+			background-color: skyblue;
+			color: #fff;
+		}
+
+		.wrap span:hover {
+			background-color: skyblue;
+			color: #fff;
+		}
+
+		body {
+			background: #eee;
+		}
+    .spann2 {
+  float: right;
+  margin-top: 9px;
+  margin-right: -266px;
+  color: black;
+  cursor: pointer;
+}
+.spann2:hover {
+  color: red;
+}
+</style>
+<body>
+  <div class="top">
+      
+      <p class="top-s1"><img class="top-img" src="https://www.pinduoduo.com/homeFavicon.ico" alt="">拼多多首页</p>
+      <a href="denglu.html"><p class="top-s2">亲，请登录</p></a>
+      <a href=""><p class="top-s3">免费注册</p></a>
+      <input class="top-a" type="text" placeholder="输入商品名称">
+      <span class="iconfont spann">&#xe623;</span>
+      <span class="iconfont spann1">&#xe614;&nbsp;</span>
+      <a href="gouwuche.html"><span class="spann2">购物车</span></a>
+  </div>
+  <div class="box-a-a">
+  <div class="box-a bx cf">
+    <a href="#" class="box-a1">
+      <img src="http://cdn.pinduoduo.com/home/static/img/common/pdd_logo_v2.png" alt="">
+    </a>
+    <ul class="box-b">
+      <li class="box-li no">
+          <a href=""><span class="box-s">首页</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://ims.pinduoduo.com/"><span class="box-s">商家入驻</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://www.pinduoduo.com/home/news/"><span class="box-s">热点资讯</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://careers.pinduoduo.com/jobs"><span class="box-s">社会招聘</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://careers.pinduoduo.com/campus/"><span class="box-s">校园招聘</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://supplier.pinduoduo.com/"><span class="box-s">招采平台</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://www.pinduoduo.com/home/help/"><span class="box-s">帮助中心</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://jubao.pinduoduo.com/home"><span class="box-s">举报平台</span></a>
+      </li>
+      <li class="box-li">
+          <a href="https://jinbao.pinduoduo.com/"><span class="box-s">分享赚钱</span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+      
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner contentBox" role="listbox">
+          <!-- <div class="item active">
+            <img src="">
+            <div class="carousel-caption">
+
+            </div>
+          </div> -->
+        </div>
+      
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+  <div class="nav-wrapper">
+        <ul class="skt">
+        </ul>
+  </div>
+  <div class="box-one bx">
+    <!-- <div class="goods"> -->
+      <!-- <img class="img" src="https://t00img-c.yangkeduo.com/goods/images/2020-05-27/c3e66ccf7c97728be336cbeb3113af32.jpeg" alt="">
+      <div class="qrcode" style="display: none;">
+        <img class="img" src="http://cdn.pinduoduo.com/home/static/img/qrcode/natural/qrcode.png" alt="">
+        <div class="qrcode-text">微信扫我购买</div>
+      </div>
+      <div class="title">高梵轻薄羽绒服女2020年新款短款时尚反季节超薄休闲轻便冬外套潮</div>
+      <div class="price">
+        ￥
+        <span class="group-price">93</span>
+        <span class="market-price">
+          ￥
+          400
+        </span>
+        <span class="count">
+          已团
+          2.0万
+          件
+        </span> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <!-- <div class="pdd-foot"> -->
+    <!-- <div class="pdd-foot-head"> -->
+      <!-- <div class="qrcode-group">
+        <div class="qrcode">
+          <img src="http://cdn.pinduoduo.com/home/static/img/common/pdd_foot_wechat.png" alt="">
+          <p>扫描二维码微信关注</p>
+        </div>
+        <div class="qrcode">
+          <img src="http://cdn.pinduoduo.com/home/static/img/common/pdd_foot_wechat.png" alt="">
+          <p>扫描二维码下载App</p>
+        </div>
+        <div class="qrcode">
+          <img src="http://cdn.pinduoduo.com/home/static/img/common/pdd_foot_wechat.png" alt="">
+          <p class="word-wrap">微信扫码免费领取拼多多店铺</p>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p class="title">联系我们</p>
+        <p class="detail">客服&举报电话：021-53395288（推荐）或400-8822-528</p>
+        <p class="detail">商家热线：021-5339-5088</p>
+        <p class="detail">商家客服服务时间：8:00-20:30</p>
+        <p class="detail">消费者客服服务时间：8:00-21:30</p>
+        <p class="detail">消费者客服外呼号码显示：9541366（仅呼出，不支持呼入）</p>
+        <p class="detail">上海寻梦信息技术有限公司</p>
+      </div> -->
+    <!-- </div> -->
+    <ul class="pd-nav-list">
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>入驻多多国际</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>校园招聘</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>关于我们</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>帮助中心</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>下载App</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>消费者保障</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>维权投诉指引</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>廉正举报</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>服务协议</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>隐私政策</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>征求意见</span>
+        </a>
+      </li>
+      <li class="pd-nav-list-item">
+        <a href="">
+          <span>Investor Relations</span>
+        </a>
+      </li>
+      <div class="wrap">
+        <span class="on">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+      </div>
+    </ul>
+    <div class="copyright">
+      <div class="pdd-foot-cr">
+        <span>Copyright 2015-2020 pinduoduo.com 版权所有</span>
+      </div>
+      <div class="pdd-foot-medicine">
+        <span>互联网药品信息服务资格证书：（沪）-经营性-2019-0052</span>
+      </div>
+      <div class="pdd-foot-record">
+        <span>沪公网安备 31010502000392号</span>
+        <span class="record-num">（沪）网械平台备字[2018]第00003号</span>
+        <span class="record-num">沪ICP备15010535号-13</span>
+      </div>
+    </div>
+  </div>
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+      <script>
+        var name = "";
+          $.ajax({
+              url:'http://127.0.0.1/w/website/bannerList',
+              data:{},
+              type:'get',
+            success:function(res) {
+                console.log(res);
+                var dataList = [];
+                dataList = res.data;
+                for (var i = 0; i < dataList.length; i++) {
+                    $(".contentBox").append(
+                        '<div class="item"><img src="'+dataList[i].img+'" alt="..."></div>'
+                    )
+                    $($(".contentBox").children()[0]).addClass("active");
+                }
+            },
+          })
+          // console.log(localStorage);
+          if (localStorage.length !== 0 ) {
+            $(".top-s2").html(localStorage.getItem("name"));
+            // console.log(".top-s2");
+            $(".top-s3").html("退出登录");
+          }
+          $(".top-s2").click(function() {
+            if($(this).html() === "亲，请登录") {
+              localStorage.href = "pinduoduo.html";
+            }
+          })
+          $(".top-s3").click(function() {
+            if($(this).html() === "免费注册") {
+              localStorage.href = "zhuce.html";
+            }
+            if($(this).html() === "退出登录") {
+              localStorage.clear();
+              $(".top-s2").html("亲，请登录");
+              $(".top-s3").html("免费注册");
+            }
+          })
+          $.ajax({
+              url:'http://127.0.0.1/w/website/findGoodsTypeList',
+              data:{},
+              type:'get',
+              success:function(edg) {
+                console.log(edg);
+                var dataLeft = [];
+                dataLeft = edg.data;
+                for (var i = 0; i < dataLeft.length; i++) {
+                    $(".skt").append(
+                      '<li>'+dataLeft[i].name+'</li>'
+                    )
+                }
+                $(".skt li").eq(0).addClass("foucs");
+                $(".skt li").click(function() {
+                      console.log($(this).html());
+                      name = $(this).html();
+                      if(name){
+                        doods(name);
+                      }
+                      $(this).addClass("foucs").siblings().removeClass("foucs");
+                    })
+              }
+            })
+            doods("配饰");
+            function doods(val, na) {
+                $.ajax({
+                  url:'http://127.0.0.1/w/website/findGoodsList',
+                  data:{
+                    info:val,	
+                    pageNo :na || 1  
+                  },
+                  type:'get',
+                success:function(sn) {
+                    console.log(sn);
+                    var lgdLeft = [];
+                    lgdLeft = sn.data.tbk_dg_material_optional_response.result_list.map_data;
+                    $(".box-one").children().remove();
+                    for (var i = 0; i < lgdLeft.length; i++) {
+                        $(".box-one").append(
+                          '<div class="goods"><img src="'+lgdLeft[i].pict_url+'"><div class="title"><a href="xiangqing.html?rng='+lgdLeft[i].item_id+'">'+lgdLeft[i].title+'</a></div><div class="price">￥<span class="group-price">' +lgdLeft[i].zk_final_price + '</span> <span class="market-price"￥>' + lgdLeft[i].reserve_price+'</span> <span class="count">已团' + lgdLeft[i].commission_rate + '件 </span></div></div>'
+                        )
+                    }
+                },
+              })
+            }
+            $(".box-li").click(function() {
+              $(this).addClass("no").siblings().removeClass("no");
+            })
+
+
+
+
+    var lock = true;
+		$(function () {
+			var spanList = $(".wrap span");
+      var nav = $(".skt");
+      nav.click(function(){
+        spanList.removeClass();
+        spanList.eq(0).addClass("on");
+      })
+			spanList.click(function () {
+				if (lock) {
+					var middleNumber = +spanList.eq(5).html();
+					var txt = +$(this).html();
+					spanList.removeClass("on");
+					spanList.eq(5).addClass("on");
+					// 小于7的点击 不采取最中间的变色
+					if (txt < 7) {
+						spanList.removeClass("on");
+						spanList.eq(+$(this).html() - 1).addClass("on");
+					}
+					// 右加
+					if (txt > middleNumber) {
+						var chazhi = +$(this).html() - middleNumber;
+						spanList.each(function (index, item) {
+							$(item).html(+$(item).html() + chazhi);
+						})
+						// 左减
+					} else {
+						// 排除 12345
+						if (+spanList.first().html() !== 1) {
+							var chazhi = Math.abs(+$(this).html() - middleNumber);
+							spanList.each(function (index, item) {
+								$(item).html(+$(item).html() - chazhi);
+							})
+						}
+						if (+spanList.first().html() < 1) {
+							spanList.each(function (index, item) {
+								$(item).html(index + 1);
+							})
+						}
+					}
+          doods(name||"配饰", $(this).html());
+				}
+			})
+		})
+      </script>
+</body>
+</html>

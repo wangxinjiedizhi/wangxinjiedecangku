@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/carts.css">
+    <link rel="stylesheet" href="./css/iconfont1.css">
+</head>
+<style>
+    .amount_box {
+        margin-left: -30px;
+        margin-top: 50px!important;
+    }
+    .list_text {
+        margin-top: 45px!important;
+    }
+    .order_lists .list_price .price {
+        margin-top: 54px!important;
+    }
+    input[type="checkbox"] {
+    display: block!important;
+}
+.order_lists .list_chk input[type="checkbox"] {
+    position: absolute;
+    z-index: 0;
+    left: 7px!important;
+    top: 19px!important;
+}
+.top {
+  width: 100%;
+  height: 35px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    color: red;
+}
+.top-s1 {
+  float: left;
+  margin-left: 180px;
+  line-height: 35px;
+}
+.top span {
+    color: red;
+}
+</style>
+<body>
+    <div class="top">
+        <p class="top-s1"><span class="iconfont spann1">&#xe614;&nbsp;</span>拼多多购物车</p>
+    </div>
+    <section class="cartMain">
+        <div class="cartMain_hd">
+            <ul class="order_lists cartTop">
+                <li class="list_chk">
+                    <!--所有商品全选-->
+                    <input type="checkbox" id="all" class="whole_check">
+                    <!-- <label for="all" ></label> -->
+                    全选
+                </li>
+                <li class="list_con">商品名称</li>
+                <li class="list_price">单价</li>
+                <li class="list_amount">数量</li>
+                <li class="list_sum">金额</li>
+                <li class="list_op">操作</li>
+            </ul>
+        </div>
+
+        <div class="cartBox">
+            <div class="order_content">
+                
+            </div>
+        </div>
+        <!--底部-->
+        <div class="bar-wrapper">
+            <div class="bar-right">
+                <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+                <div class="calBtn"><a href="javascript:;">结算</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="model_bg"></section>
+    <section class="my_model">
+        <p class="title">删除商品<span class="closeModel">X</span></p>
+        <p>您确认要移出购物车吗？</p>
+        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
+    </section>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./js/carts.js"></script>
+    <script>
+        var gwc = JSON.parse(localStorage.getItem("gouwuche"));
+        for (var s = 0; s < gwc.length; s++) {
+            $(".order_content").append(
+                `<ul class="order_lists">
+                    <li class="list_chk">
+                        <input type="checkbox" id="checkbox_2" class="son_check">
+                    </li>
+                    <li class="list_con">
+                        <div class="list_img"><a href="javascript:;"><img src="${gwc.img}" alt=""></a></div>
+                        <div class="list_text"><a href="javascript:;">${gwc.name}</a></div>
+                    </li>
+                    <li class="list_price">
+                        <p class="price">${gwc.price}</p>
+                    </li>
+                    <li class="list_amount">
+                        <div class="amount_box">
+                            <a href="javascript:;" class="reduce reSty">-</a>
+                            <input type="text" value="1" class="sum">
+                            <a href="javascript:;" class="plus">+</a>
+                        </div>
+                    </li>
+                    <li class="list_sum">
+                        <p class="sum_price">￥${gwc.price}</p>
+                    </li>
+                    <li class="list_op">
+                        <p class="del"><a href="javascript:;" class="delBtn" index="${s}">移除商品</a></p>
+                    </li>
+                </ul>`
+            )
+        }
+
+        $(".delBtn").click(function () {
+            $(this).attr("index");
+            var gwc = JSON.parse(localStorage.getItem("gwc"));
+            $(this).parent().parent().parent().remove();
+            gwc.splice($(this).attr("index"), 1);
+            // localStorage.clear();
+            localStorage.setItem("gwc", JSON.stringify(gwc));
+            window.location.reload();
+        })
+    </script>
+</body>
+</html>
